@@ -848,3 +848,7 @@ textarea {
 	width: 150px;
 }
 
+.breadcrumb{
+	font-size: 18px;
+	padding-bottom: 39px;
+}

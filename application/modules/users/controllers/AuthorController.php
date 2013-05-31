@@ -23,7 +23,7 @@ class Users_AuthorController extends Zend_Controller_Action
         }
              
         $values = $form->getValues();
-		
+        
         // Setup DbTable adapter
         $adapter = new Zend_Auth_Adapter_DbTable(Zend_Registry::get('db'));
         $adapter->setTableName('acl_users');

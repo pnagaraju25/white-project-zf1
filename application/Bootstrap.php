@@ -155,11 +155,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$container = new Zend_Navigation($confignav);	
 		$view->navigation($container);
 
-/*		$router = Zend_Controller_Front::getInstance()->getRouter();
-        $fake_route = new Zend_Controller_Request_Http();
-        $fake_route->setRequestUri('/');
-        $router->route($fake_route);
-	*/	
 	}
 
 	protected function _initGoogleMap()

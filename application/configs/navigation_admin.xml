@@ -4,18 +4,16 @@
         <admin>
             <label>Admin</label>
             <route>default</route>
+            <uri>/admin/index/index</uri>
             <module>admin</module>
             <controller>index</controller>
-            <action>index</action>
-            <uri>/admin/index/index</uri>
+            <action>index</action>            
             <resource>admin:index</resource>
             <privilege>index</privilege>
             <pages>            	
                 <list>
                     <label>List Resources</label>
-                    <module>admin</module>
-                    <controller>index</controller>
-                    <action>listresources</action>
+                    <uri>/admin/index/listresources</uri>
                     <resource>admin:index</resource>
                     <privilege>listresources</privilege>
                 </list>
@@ -78,7 +76,6 @@
             <module>users</module>
             <controller>index</controller>
             <action>index</action>
-            <uri>/users/index/index</uri>
             <resource>users:index</resource>
             <privilege>index</privilege>
             <pages>
@@ -193,7 +190,7 @@
                     </pages>
                 </permissions>
                 <modules>
-                    <label>Módulos</label>
+                    <label>MÃ³dulos</label>
                     <uri>/users/modules/index</uri>
                     <resource>users:modules</resource>
                     <privilege>index</privilege>
@@ -238,17 +235,13 @@
             <pages>
                 <useajax>
                     <label>Use Ajax</label>
-                    <module>developers</module>
-                    <controller>index</controller>
-                    <action>useajax</action>
+                    <uri>/developers/index/useajax</uri>
                     <resource>developers:index</resource>
                     <privilege>useajax</privilege>
                 </useajax>
                 <usedojojs>
                     <label>Use Dojo</label>
-                    <module>developers</module>
-                    <controller>index</controller>
-                    <action>usedojojs</action>
+                    <uri>/developers/index/usedojojs</uri>
                     <resource>developers:index</resource>
                     <privilege>usedojojs</privilege>
                 </usedojojs>
@@ -280,6 +273,12 @@
             <resource>projects:index</resource>
             <privilege>index</privilege>
             <pages>
+                <projects>
+                    <label>Projects</label>                   
+                    <uri>/projects/index</uri>
+                    <resource>projects:index</resource>
+                    <privilege>index</privilege>
+                </projects>
                 <equipo>
                     <label>Equipo</label>                   
                     <uri>/equipo/index</uri>

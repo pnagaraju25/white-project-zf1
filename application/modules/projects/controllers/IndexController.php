@@ -40,9 +40,9 @@ class Projects_IndexController extends Zend_Controller_Action
         $this->_helper->layout->setLayout('layout_backend');			// Change layout
         $uri="/".$this->_getParam('module')."/".$this->_getParam('controller')."/".$this->_getParam('action');
         $activeNav = $this->view->navigation()->findByUri($uri);
-		$activeNav->active=true;
+		$activeNav->active = true;
 		
-		$this->SesOrk = new Zend_Session_Namespace('SesJdvdp');
+		$this->SesOrk = new Zend_Session_Namespace('Seswp');
     }	
 
    /**

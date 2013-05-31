@@ -38,46 +38,17 @@
         <?php $this->headScript()->appendFile($this->baseUrl('/styles/fileuploader/js/fileuploader.js')); ?>
         <?php $this->headScript()->appendFile($this->baseUrl('/scripts/js/Ajax.js')); ?>
         <?php echo $this->headScript() ?>
-<?php /*
-<!--      <script type="text/javascript" -->
-<!--      		  src="<?php //=DOJO_PATH;?>/release/ag/dojo/dojo.js">-->
-<!--      </script>>-->
-      
-<!--      <script type="text/javascript"  -->
-<!--      		  src="<?=DOJO_PATH;?>/release/ag/ag.js" -->
-<!--      		  djConfig="parseOnLoad:true" >-->
-<!--      </script>>-->
-<!--           -->
-<!--      <script type="text/javascript" >-->
-<!--      	dojo.require('custom.main');-->
-<!--      </script> -->*/
-?>
         <?php
 	        if ($this->dojo()->isEnabled())
 	        {
-//	            Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
-//	            $this->dojo()->setLocalPath($this->baseUrl(DOJO_PATH.'/dojo/dojo.js'));
 	            $this->dojo()
 	            	->setLocalPath($this->baseUrl('/scripts/js/release/ag/dojo/dojo.js'))
-//	            	->setLocalPath($this->baseUrl(DOJO_PATH.'/release/ag/ag.js'))
 	                ->addStyleSheetModule('dijit.themes.tundra')
-	                //->addStyleSheet('/scripts/js/Dojo/dojo/resource/dojo.css')
-//	                ->setDjConfigOption('parseOnLoad', true) 
 	                ->setDjConfigOption('isDebug', false)
 	                ->setDjConfigOption('locale', 'es-es')
-//	             	->requireModule('dijit.dijit')           		
-//	             	->requireModule('dijit.layout.ContentPane')
-//	             	->requireModule('dijit.layout.TabContainer')
-//	             	->requireModule('dijit.layout.LinkPane')
-//	             	->requireModule('dijit.form.ComboBox')
-//	             	->requireModule('dijit.form.Button')
-//	             	->requireModule('dijit.form.TextBox')
-//	             	->requireModule('dijit.form.CheckBox')
-//	             	->requireModule('dojo.io.iframe')	
-//					->addLayer(DOJO_PATH.'/release/ag/custom/main.js')
+
 					;
 		    	echo $this->dojo();
-		    	//echo "sissiis2";
 		   	}
         ?>
              
@@ -90,10 +61,10 @@
 		
 		<div id="sidebar"><div id="sidebar-wrapper"> <!-- Sidebar with logo and menu -->
 			
-			<h1 id="sidebar-title"><a href="#">JDVDP Admin</a></h1>
+			<h1 id="sidebar-title"><a href="#">White Project Admin</a></h1>
 		  
 			<!-- Logo (221px wide) -->
-			<a href="#"><img id="logo" src="/styles/resources/images/logo_short.png" alt="jdvpd Admin logo" /></a>
+			<a href="#"><img id="logo" src="/styles/resources/images/logo.png" alt="WP Admin logo" /></a>
 
 		  
 			<!-- Sidebar Profile links -->
@@ -122,8 +93,7 @@
 			                    ->setAcl($acl)
 							  	->setRole($list['role'])
                  ;?>
-               
-                
+                 
             </div>
 			
 			
@@ -132,7 +102,17 @@
 		</div></div> <!-- End #sidebar -->
 		
 		<div id="main-content"> <!-- Main Content Section with everything -->
-			
+			<div class="breadcrumb">
+				<?php 
+            		echo $this->navigation()
+			       			    ->breadcrumbs()
+			       			    ->setMinDepth(0)
+			       			    ->setLinkLast(false)
+			       			    ->setSeparator(" : ")
+			       			    ->setAcl($acl)
+						    	->setRole($list['role'])
+			    ;?>
+			</div>
 			<noscript> <!-- Show a notification if the user has disabled javascript -->
 				<div class="notification error png_bg">
 					<div>
