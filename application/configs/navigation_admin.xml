@@ -286,6 +286,33 @@
                     <privilege>index</privilege>
                 </equipo>
             </pages>
-        </management>        
+        </management> 
+        <webservice>
+            <label>Webservice</label>
+            <route>default</route>            
+            <uri>/webservice</uri>
+            <resource>webservice:index</resource>
+            <privilege>index</privilege>
+            <pages>
+                <webservice>
+                    <label>Index</label>                   
+                    <uri>/webservice/index/index</uri>
+                    <resource>webservice:index</resource>
+                    <privilege>index</privilege>
+                </webservice> 
+                <webserviceServer>
+                    <label>Server</label>                   
+                    <uri>/webservice/index/server</uri>
+                    <resource>webservice:index</resource>
+                    <privilege>server</privilege>
+                </webserviceServer> 
+                <webserviceClient>
+                    <label>Client</label>                   
+                    <uri>/webservice/index/client</uri>
+                    <resource>webservice:index</resource>
+                    <privilege>client</privilege>
+                </webserviceClient>               
+            </pages>
+        </webservice>       
     </nav>
 </config>
