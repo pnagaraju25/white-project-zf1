@@ -10,13 +10,19 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+-- Volcando estructura de base de datos para white_project
+CREATE DATABASE IF NOT EXISTS `white_project` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `white_project`;
+
+
 -- Volcando estructura para tabla white_project.acl_modules
+DROP TABLE IF EXISTS `acl_modules`;
 CREATE TABLE IF NOT EXISTS `acl_modules` (
   `module_id` int(11) NOT NULL AUTO_INCREMENT,
   `module_name` varchar(255) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`module_id`),
   UNIQUE KEY `module_name` (`module_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- Volcando datos para la tabla white_project.acl_modules: 9 rows
 /*!40000 ALTER TABLE `acl_modules` DISABLE KEYS */;
@@ -25,7 +31,7 @@ INSERT INTO `acl_modules` (`module_id`, `module_name`) VALUES
 	(2, 'admin'),
 	(3, 'users'),
 	(5, 'frontend'),
-	(26, 'publications'),
+	(30, 'webservice'),
 	(25, 'projects'),
 	(27, 'images'),
 	(28, 'developers'),
@@ -34,6 +40,7 @@ INSERT INTO `acl_modules` (`module_id`, `module_name`) VALUES
 
 
 -- Volcando estructura para tabla white_project.acl_permissions
+DROP TABLE IF EXISTS `acl_permissions`;
 CREATE TABLE IF NOT EXISTS `acl_permissions` (
   `permission_id` int(11) NOT NULL AUTO_INCREMENT,
   `role_id` int(1) NOT NULL,
@@ -44,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `acl_permissions` (
   PRIMARY KEY (`permission_id`),
   KEY `fk_acl_permissions_acl_roles` (`role_id`),
   KEY `fk_acl_permissions_acl_resources1` (`resource_uid`)
-) ENGINE=MyISAM AUTO_INCREMENT=395 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=398 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- Volcando datos para la tabla white_project.acl_permissions: 71 rows
 /*!40000 ALTER TABLE `acl_permissions` DISABLE KEYS */;
@@ -119,11 +126,15 @@ INSERT INTO `acl_permissions` (`permission_id`, `role_id`, `resource_uid`, `perm
 	(391, 1, 74, 'delete', 'delete', 1),
 	(392, 1, 75, 'addphoto', 'addphoto', 1),
 	(393, 1, 75, 'deletephoto', 'deletephoto', 1),
-	(394, 1, 75, 'reloadgallery', 'reloadgallery', 1);
+	(394, 1, 75, 'reloadgallery', 'reloadgallery', 1),
+	(395, 5, 76, 'index', 'noseusa', 0),
+	(396, 6, 76, 'server', 'server', 0),
+	(397, 6, 76, 'client', 'client', 0);
 /*!40000 ALTER TABLE `acl_permissions` ENABLE KEYS */;
 
 
 -- Volcando estructura para tabla white_project.acl_resources
+DROP TABLE IF EXISTS `acl_resources`;
 CREATE TABLE IF NOT EXISTS `acl_resources` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `module_id` int(11) NOT NULL,
@@ -132,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `acl_resources` (
   PRIMARY KEY (`uid`),
   UNIQUE KEY `resource` (`resource`),
   KEY `fk_acl_resources_acl_modules1` (`module_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=76 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=77 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- Volcando datos para la tabla white_project.acl_resources: 17 rows
 /*!40000 ALTER TABLE `acl_resources` DISABLE KEYS */;
@@ -153,11 +164,13 @@ INSERT INTO `acl_resources` (`uid`, `module_id`, `resource`, `name_r`) VALUES
 	(72, 27, 'images:index', 'index'),
 	(73, 28, 'developers:index', 'index'),
 	(74, 29, 'equipo:index', 'index'),
-	(75, 25, 'projects:ajax', 'ajax');
+	(75, 25, 'projects:ajax', 'ajax'),
+	(76, 30, 'webservice:index', 'Nousa');
 /*!40000 ALTER TABLE `acl_resources` ENABLE KEYS */;
 
 
 -- Volcando estructura para tabla white_project.acl_roles
+DROP TABLE IF EXISTS `acl_roles`;
 CREATE TABLE IF NOT EXISTS `acl_roles` (
   `role_id` int(11) NOT NULL AUTO_INCREMENT,
   `role_name` varchar(64) CHARACTER SET latin1 NOT NULL,
@@ -177,6 +190,7 @@ INSERT INTO `acl_roles` (`role_id`, `role_name`, `role_parents`, `prefered_uri`)
 
 
 -- Volcando estructura para tabla white_project.acl_users
+DROP TABLE IF EXISTS `acl_users`;
 CREATE TABLE IF NOT EXISTS `acl_users` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `role_id` int(4) NOT NULL,
@@ -202,6 +216,7 @@ INSERT INTO `acl_users` (`uid`, `role_id`, `user_name`, `password`, `date`, `ema
 
 
 -- Volcando estructura para tabla white_project.categories
+DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_eng` varchar(100) COLLATE utf8_bin NOT NULL,
@@ -228,6 +243,7 @@ INSERT INTO `categories` (`id`, `category_eng`, `category_esp`, `category_cat`, 
 
 
 -- Volcando estructura para tabla white_project.equipo
+DROP TABLE IF EXISTS `equipo`;
 CREATE TABLE IF NOT EXISTS `equipo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `equipo_esp` text COLLATE utf8_bin,
@@ -248,6 +264,7 @@ INSERT INTO `equipo` (`id`, `equipo_esp`, `equipo_eng`, `equipo_cat`, `photo`, `
 
 
 -- Volcando estructura para tabla white_project.projects
+DROP TABLE IF EXISTS `projects`;
 CREATE TABLE IF NOT EXISTS `projects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `short_name` varchar(50) COLLATE utf8_bin NOT NULL,
